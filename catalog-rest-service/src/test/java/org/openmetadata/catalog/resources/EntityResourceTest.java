@@ -127,6 +127,7 @@ import org.openmetadata.catalog.resources.teams.RoleResourceTest;
 import org.openmetadata.catalog.resources.teams.TeamResourceTest;
 import org.openmetadata.catalog.resources.teams.UserResourceTest;
 import org.openmetadata.catalog.security.SecurityUtil;
+import org.openmetadata.catalog.security.policyevaluator.SubjectContext;
 import org.openmetadata.catalog.type.ChangeDescription;
 import org.openmetadata.catalog.type.ChangeEvent;
 import org.openmetadata.catalog.type.Column;
@@ -277,8 +278,8 @@ public abstract class EntityResourceTest<T extends EntityInterface, K extends Cr
     new StorageServiceResourceTest().setupStorageServices();
     new DashboardServiceResourceTest().setupDashboardServices(test);
     new MlModelServiceResourceTest().setupMlModelServices(test);
-
     new TableResourceTest().setupDatabaseSchemas(test);
+    SubjectContext.cleanup();
   }
 
   @AfterAll
